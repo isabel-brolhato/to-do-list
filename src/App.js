@@ -1,4 +1,7 @@
 import React from 'react';
+import AddBtn from './Components/AddBtn';
+import Title from './Components/Title';
+
 
 class App extends React.Component {
   constructor(props) {
@@ -37,7 +40,8 @@ class App extends React.Component {
   render() {
     return (
       <div>
-        <h1 className="title">To Do List</h1>
+        <AddBtn />
+<Title />
         <div className="container">
           <input
             type="text"
@@ -48,6 +52,7 @@ class App extends React.Component {
           <button
             className="add-btn"
             onClick={() => this.addItem()}
+            disabled={!this.state.newItem.length}
           >Add</button>
           <br />
           <ul>
