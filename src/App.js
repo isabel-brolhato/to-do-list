@@ -48,6 +48,12 @@ function App() {
     setNewItem('');
   }
 
+  const handleKeyDown = (event) => {
+    if (event.key === "Enter") {
+      addItem();
+    }
+  };
+
   return (
     <div>
       <Title />
@@ -55,6 +61,7 @@ function App() {
         newItem={newItem}
         setNewItem={setNewItem}
         handleSubmit={handleSubmit}
+        handleKeyDown={handleKeyDown}
       />
       <Content
         items={items}
