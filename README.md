@@ -1,3 +1,7 @@
+# To do list (pun intended)
+
+This is a playground for a test project for future recruitment reference. Also, an attempt at implementing best practices with the React library, unit testing with Jest, integration testing with Cypress, CI/CD with Travis + Heroku.
+
 # Getting Started with Create React App
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
