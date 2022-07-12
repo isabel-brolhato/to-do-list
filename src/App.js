@@ -1,74 +1,76 @@
-import React from 'react';
-import AddBtn from './Components/AddBtn';
+import { useState } from 'react';
 import Title from './Components/Title';
+import Content from './Components/Content';
+import AddItem from './Components/AddItem';
 
+function App() {
+  const [items, setItems] = useState([
+    {
+      id: 1,
+      checked: true,
+      item: "Walk Tuco"
+    },
+    {
+      id: 2,
+      checked: false,
+      item: "Item 2"
+    },
+    {
+      id: 3,
+      checked: false,
+      item: "Item 3"
+    }
+  ]);
 
-class App extends React.Component {
-  constructor(props) {
-    super(props);
-    this.state = {
-      newItem: "",
-      list: []
-    };
+  const [newItem, setNewItem] = useState('')
+
+  const addItem = (item) => {
+    const id = items.length ? items[items.length - 1].id + 1 : 1;
+    const myNewItem = { id, checked: false, item };
+    const listItems = [...items, myNewItem];
+    setItems(listItems);
   }
 
-  updateInput(key, value) {
-    this.setState({ [key]: value });
+
+  const handleCheck = (id) => {
+    const listItems = items.map((item) => item.id === id ? { ...item, checked: !item.checked } : item);
+    setItems(listItems);
   }
 
-  addItem() {
-    const newItem = {
-      id: 1 + Math.random(),
-      value: this.state.newItem.slice()
-    };
-
-    const list = [...this.state.list];
-    list.push(newItem);
-
-    this.setState({
-      list,
-      newItem: ""
-    });
+  const handleDelete = (id) => {
+    const listItems = items.filter((item) => item.id !== id);
+    setItems(listItems);
   }
 
-  deleteItem(id) {
-    const list = [...this.state.list];
-    const updatedList = list.filter(item => item.id !== id);
-    this.setState({ list: updatedList });
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    addItem(newItem);
+    setNewItem('');
   }
 
-  render() {
-    return (
-      <div>
-        <AddBtn />
-<Title />
-        <div className="container">
-          <input
-            type="text"
-            placeholder="Add item name"
-            value={this.state.newItem}
-            onChange={e => this.updateInput("newItem", e.target.value)}
-          />
-          <button
-            className="add-btn"
-            onClick={() => this.addItem()}
-            disabled={!this.state.newItem.length}
-          >Add</button>
-          <br />
-          <ul>
-            {this.state.list.map(item => {
-              return (
-                <li key={item.id}>
-                  {item.value}
-                  <button className="delete-btn" onClick={() => this.deleteItem(item.id)}>Delete</button>
-                </li>
-              );
-            })}
-          </ul>
-        </div>
-      </div>
-    );
-  }
+  const handleKeyDown = (event) => {
+    if (event.key === "Enter") {
+      addItem();
+    }
+  };
+
+
+  return (
+    <div>
+      <Title />
+      <AddItem
+        newItem={newItem}
+        setNewItem={setNewItem}
+        handleSubmit={handleSubmit}
+        handleKeyDown={handleKeyDown}
+      />
+      <Content
+        items={items}
+        handleCheck={handleCheck}
+        handleDelete={handleDelete}
+      />
+    </div>
+  );
 }
 
 
