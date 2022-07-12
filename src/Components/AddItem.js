@@ -1,5 +1,5 @@
 
-const AddItem = ({ newItem, setNewItem, handleSubmit, handleKeyDown }) => {
+const AddItem = ({ newItem, setNewItem, handleSubmit}) => {
     return (
         <form className='addForm' onSubmit={handleSubmit}>
             <input
@@ -8,7 +8,6 @@ const AddItem = ({ newItem, setNewItem, handleSubmit, handleKeyDown }) => {
                 placeholder='Add Item'
                 value={newItem}
                 onChange={(e) => setNewItem(e.target.value)}
-                handleKeyDown={handleKeyDown}
             />
             <button
                 type='submit'
