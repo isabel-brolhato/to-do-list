@@ -2,7 +2,7 @@
 const AddItem = ({ newItem, setNewItem, handleSubmit}) => {
     return (
         <form className='addForm' onSubmit={handleSubmit}>
-            <input
+            <input className='input'
                 id='addItem'
                 type='text'
                 placeholder='Add Item'
