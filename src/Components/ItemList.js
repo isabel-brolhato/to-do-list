@@ -3,7 +3,7 @@ import LineItem from "./LineItem"
 
 const ItemList = ({ items, handleCheck, handleDelete }) => {
     return (
-        <ul id='list'>
+        <ul id='list' data-testid="item-list">
             {items.map((item) => (
                 <LineItem
                     key={item.id}
