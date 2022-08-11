@@ -1,4 +1,4 @@
-import { render, screen } from "@testing-library/react";
+import { getByTestId, render, screen } from "@testing-library/react";
 import Title from "../Components/Title";
 
 test("Should contain title", () => {
@@ -10,5 +10,6 @@ test("Should contain title", () => {
 test("Should have a title 'To Do List'", () => {
   render(<Title />);
 
+  expect.stringMatching(/To Do List/);
 });
 
