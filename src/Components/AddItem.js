@@ -1,7 +1,7 @@
 
 const AddItem = ({ newItem, setNewItem, handleSubmit}) => {
     return (
-        <form className='addForm' onSubmit={handleSubmit}>
+        <form className='addForm' onSubmit={handleSubmit} data-testid="add-item">
             <input className='input'
                 id='addItem'
                 type='text'
