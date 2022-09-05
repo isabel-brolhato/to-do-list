@@ -57,7 +57,7 @@ function App() {
 
   return (
     <div>
-      <Title />
+      <Title items={items} />
       <AddItem
         newItem={newItem}
         setNewItem={setNewItem}
