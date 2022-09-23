@@ -3,7 +3,7 @@ import LineItem from "./LineItem"
 
 const ItemList = ({ items, handleCheck, handleDelete }) => {
     return (
-        <ul>
+        <ul id='list' data-testid="item-list">
             {items.map((item) => (
                 <LineItem
                     key={item.id}
@@ -17,5 +17,6 @@ const ItemList = ({ items, handleCheck, handleDelete }) => {
         </ul>
     )
 }
+
 
 export default ItemList

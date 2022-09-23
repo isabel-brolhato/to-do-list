@@ -1,7 +1,7 @@
 const Title = () => {
     return (
     <header>
-        <h1 className="title">To Do List</h1>
+        <h1 className="title" data-testid="title">To Do List</h1>
         </header>
     )
 
